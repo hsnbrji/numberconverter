@@ -1,6 +1,14 @@
 package com.hsnbrji.numberconverter.util;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DecimalToRomanConverter implements INumberConverter<String> {
+
+    @Override
+    public String getConversion() {
+        return "decimal-roman";
+    }
 
     @Override
     public String convert(String toConvert) {

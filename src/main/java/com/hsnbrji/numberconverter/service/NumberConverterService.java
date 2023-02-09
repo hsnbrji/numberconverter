@@ -15,10 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class NumberConverterService {
 
     private final ConversionAuditRepository conversionAuditRepository;
+    private final NumberConverterFactory numberConverterFactory;
 
     @Transactional
     public Object convert(ConversionParam param) throws ConversionNotPossibleException {
-        var converter = NumberConverterFactory.getConverter(param.inputFormat(), param.outputFormat());
+        var converter = numberConverterFactory.getConverter(param.inputFormat(), param.outputFormat());
         Object result = converter.convert(param.inputNumber());
         ConversionAudit audit = ConversionAudit
             .builder()

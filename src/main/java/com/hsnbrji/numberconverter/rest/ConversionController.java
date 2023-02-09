@@ -2,6 +2,7 @@ package com.hsnbrji.numberconverter.rest;
 
 import com.hsnbrji.numberconverter.param.ConversionParam;
 import com.hsnbrji.numberconverter.service.NumberConverterService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class ConversionController {
 
     @PostMapping("/convert")
     @SneakyThrows
-    public ResponseEntity<String> convert(@RequestBody ConversionParam param) {
+    public ResponseEntity<String> convert(@RequestBody @Valid ConversionParam param) {
         return ResponseEntity.ok(this.numberConverterService.convert(param).toString());
     }
 
